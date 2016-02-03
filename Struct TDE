@@ -1,0 +1,82 @@
+*
+ * structTDE.c
+ *
+ *  Created on: 27/01/2016
+ *      Author: IE699416
+ */
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+	typedef struct
+	{
+	unsigned short int day, month, year;
+	char monthName[11];
+	}strDate;
+
+	typedef struct
+	{
+		int folio;
+		strDate PurchaseDate;
+		char event[20];
+		float price;
+	} ticket;
+
+int main()
+{
+
+	ticket Zoe;
+	Zoe.folio =1;
+	strcpy(Zoe.event, "Zoe live");
+	Zoe.PurchaseDate.day = 27;
+	Zoe.PurchaseDate.month = 01;
+	Zoe.PurchaseDate.year = 2016;
+	strcpy(Zoe.PurchaseDate.monthName,"Enero");
+	Zoe.price = 599.00;
+	printf("%s\nEn concierto el %d/%s/%d \nPrecio: %.2f \n\n", Zoe.event, Zoe.PurchaseDate.day, Zoe.PurchaseDate.monthName,
+				Zoe.PurchaseDate.year, Zoe.price);
+
+	ticket Array[100];
+	int i;
+	for (i=0; i<100;i++)
+	{
+		strcpy(Array[i].PurchaseDate.monthName, "Julio");
+
+	}
+
+	puts(Array[49].PurchaseDate.monthName);
+
+
+
+
+
+
+
+
+
+	strDate Navidad;
+	Navidad.day = 25;
+	Navidad.month = 12;
+	Navidad.year = 2016;
+	strcpy(Navidad.monthName, "December");
+
+	strDate Revolusion = {20, 11, 1910, "Noviembre"};
+
+	printf("\n%d/%d/%d\n", Navidad.day,Navidad.month , Navidad.year);
+	printf("%s\n\n", Navidad.monthName);
+
+
+	printf("%d/%d/%d\n", Revolusion.day ,Revolusion.month , Revolusion.year );
+		printf("%s\n\n", Revolusion.monthName);
+
+	Revolusion = Navidad;
+//Igualar una estructura clona los  datos uno por uno a la nueva estructura sólo sí son del mismo TDE
+	Navidad.year = 2017;
+//Navidad queda intacto dado que ambos tienen diferentes direciones de memoria.
+
+
+	printf("%d/%d/%d\n", Revolusion.day ,Revolusion.month , Revolusion.year );
+			printf("%s\n\n", Revolusion.monthName);
+
+	return 0;
+}
